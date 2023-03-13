@@ -14,20 +14,12 @@ Milestone 4 (BONUS)
 Gestire ulteriori parametri per la password: quali caratteri usare fra numeri, lettere e simboli. Possono essere scelti singolarmente 
 (es. solo numeri) oppure possono essere combinati fra loro (es. numeri e simboli, oppure tutti e tre insieme).
 Dare all'utente anche la possibilità di permettere o meno la ripetizione di caratteri uguali. -->
-	<?php
-		$length = $_GET['length'];
+<?php
 
-		function generate_password($length) {
-			$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+{}';
-			$password = '';
-			for ($i = 0; $i < $length; $i++) {
-				$password .= 	$characters[rand(0, strlen(	$characters) - 1)];
-			}
-			return $password;
-		}
-
-		$password = generate_password($length);
-	?>
+  include_once( __dir__ . "./partials/functions.php")
+  
+ 
+?>
 
 
 
@@ -45,18 +37,19 @@ Dare all'utente anche la possibilità di permettere o meno la ripetizione di car
 <body>
   <div class="container">
     <h1>Password Generator</h1>
-  <form>
-  <div class="col-2">
-    <label for="length" class="mb-2">Lunghezza password:</label>
-    <input type="number" class="form-control" id="length" name="length" min="1" max="14" required>
-  </div>
-  <div class="col-2">
-    <button type="submit" class="btn btn-primary mt-3 mb-3">Genera Password</button>
-  </div>
-</form>
+    <form>
+      <div class="col-2">
+        <label for="length" class="mb-2">Lunghezza password:</label>
+        <input type="number" class="form-control" id="length" name="length" min="6" max="16" required>
+      </div>
+      <div class="col-2">
+        <button type="submit" class="btn btn-primary mt-3 mb-3">Genera Password</button>
+      </div>
+    </form>
 
-
-  <p>La tua Password è <strong> <?= $password ?></strong></p>
+    <p>La tua Password è <strong> <?= $password ?> </strong></p>
   </div>
+
+  
 </body>
 </html>
